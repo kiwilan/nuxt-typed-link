@@ -2,6 +2,8 @@ name: publish
 
 on:
   push:
+    paths-ignore:
+      - 'i18n-app/**'
     branches:
       - main
 
@@ -9,8 +11,6 @@ jobs:
   release:
     name: publish
     runs-on: ubuntu-latest
-    paths-ignore:
-      - 'i18n-app/**'
     steps:
       - name: 📚 checkout
         uses: actions/checkout@v3
