@@ -1,0 +1,146 @@
+import { createWriteStream, WriteStream } from 'fs'
+import { NuxtPage } from '@nuxt/schema'
+
+interface Route {
+  name?: string
+  path: string
+  params?: Record<string, string>
+}
+
+export class TypedRoute {
+  private constructor (
+    private nuxtRoutes: NuxtPage[],
+    private path: string,
+    private routes: Route[] = []
+  ) {
+    this.nuxtRoutes = nuxtRoutes
+  }
+
+  public static make (pages: NuxtPage[], path: string): TypedRoute {
+    const typedRoute = new TypedRoute(pages, path)
+    typedRoute.routes = typedRoute.setRoutes()
+    typedRoute.createCache()
+
+    return typedRoute
+  }
+
+  private setRoutes (): Route[] {
+    const routes: Route[] = []
+    const localeRaw = this.nuxtRoutes.find(route => route.name?.includes('___'))
+    let locale: string|undefined
+
+    let i18n = false
+    let routeList: {
+      name?: string
+      path: string
+      haveParams: boolean
+      params: Record<string, string>
+    }[] = []
+
+    this.nuxtRoutes.forEach((route) => {
+      let haveParams = false
+      let params = {}
+      if (route.path.includes(':')) {
+        haveParams = true
+        const path = route.path.replace(/\/$/, '')
+        const pathParts = path.split('/')
+        const pathParams = pathParts.filter(part => part.startsWith(':'))
+        params = pathParams.reduce((acc, param) => {
+          const key = param.replace(':', '')
+          return { ...acc, [key]: 'string' }
+        }, {})
+      }
+
+      if (route.name?.includes('___')) {
+        i18n = true
+        locale = localeRaw?.name?.split('___')[1] || undefined
+      }
+
+      routeList.push({
+        name: route.name,
+        path: route.path,
+        haveParams,
+        params
+      })
+    })
+
+    if (i18n) {
+      routeList = routeList.filter(route => route.name?.includes(`___${locale}`))
+      routeList.forEach((route) => {
+        route.name = route.name?.replace(`___${locale}`, '')
+      })
+    }
+
+    routeList.forEach((route) => {
+      routes.push({
+        name: route.name,
+        path: route.path,
+        params: route.haveParams ? route.params : undefined
+      })
+    })
+
+    return routes
+  }
+
+  private createCache () {
+    const stream = createWriteStream(this.path, { flags: 'w' })
+
+    stream.once('open', () => {
+      this.setRouteList(stream)
+      this.setRouteListType(stream)
+      this.setRouteParamsType(stream)
+      this.setRouteType(stream)
+      stream.end()
+    })
+  }
+
+  private setRouteList (stream: WriteStream) {
+    stream.write('export const routes = {\n')
+    this.routes.forEach((route) => {
+      stream.write(`  '${route.name}': {\n`)
+      stream.write(`    name: '${route.name}',\n`)
+      stream.write(`    path: '${route.path}',\n`)
+      if (route.params && Object.keys(route.params).length) {
+        stream.write('    params: {\n')
+
+        Object.keys(route.params).forEach((key) => {
+          if (route.params) { stream.write(`      ${key}: '${route.params[key]}',\n`) }
+        })
+        stream.write('    },\n')
+      } else {
+        stream.write('    params: undefined,\n')
+      }
+      stream.write('  },\n')
+    })
+    stream.write('}\n')
+  }
+
+  private setRouteListType (stream: WriteStream) {
+    stream.write('export type TypedRouteList =\n')
+    this.routes.forEach((route) => {
+      stream.write(`  | '${route.name}'\n`)
+    })
+  }
+
+  private setRouteParamsType (stream: WriteStream) {
+    stream.write('export type TypedRouteParams = {\n')
+    this.routes.forEach((route) => {
+      if (route.params) {
+        stream.write(`  '${route.name}': {\n`)
+        Object.keys(route.params).forEach((param) => {
+          stream.write(`    ${param}: string | number\n`)
+        })
+        stream.write('  }\n')
+      } else { stream.write(`  '${route.name}': never\n`) }
+    })
+    stream.write('}\n')
+  }
+
+  private setRouteType (stream: WriteStream) {
+    stream.write('export interface RouteType {\n')
+    stream.write('  name: TypedRouteList\n')
+    stream.write('  params?: TypedRouteParams[TypedRouteList]\n')
+    stream.write('  query?: Record<string, string>\n')
+    stream.write('}\n')
+  }
+}
