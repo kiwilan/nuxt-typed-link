@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { RouteLocation } from 'vue-router'
-import type { RouteType } from '~~/.nuxt/typed-routes'
+import type { RouteType } from '~~/.nuxt/typed-link'
 
 const props = defineProps<{
   to: RouteType

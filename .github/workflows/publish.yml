@@ -25,9 +25,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: pnpm
       - run: pnpm install
-      - run: |
-          mkdir playground/.nuxt
-          touch playground/.nuxt/typed-routes.ts
       - run: pnpm dev:prepare
       - run: pnpm prepack
       - name: Create Release

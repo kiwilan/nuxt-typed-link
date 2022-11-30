@@ -3,7 +3,7 @@ import { RouteLocation } from 'vue-router'
 // @ts-ignore
 // eslint-disable-next-line import/named
 import { useLocalePath } from '#imports'
-import type { RouteType } from '~~/.nuxt/typed-routes'
+import type { RouteType } from '~~/.nuxt/typed-link'
 
 const props = defineProps<{
   to: RouteType

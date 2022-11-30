@@ -1,6 +1,6 @@
 import { useRouter } from '#app'
-import type { RouteType, TypedRouteList, TypedRouteParams } from '~~/.nuxt/typed-routes'
-import { routes } from '~~/.nuxt/typed-routes'
+import type { RouteType, TypedRouteList, TypedRouteParams } from '~~/.nuxt/typed-link'
+import { routes } from '~~/.nuxt/typed-link-routes'
 
 export const useTypedLink = () => {
   const router = useRouter()

@@ -1,6 +1,10 @@
 {
   "name": "nuxt-typed-link",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": {
+    "name": "Kiwilan",
+    "email": "ewilan.riviere@gmail.com"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {

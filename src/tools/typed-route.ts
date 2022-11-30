@@ -10,14 +10,15 @@ interface Route {
 export class TypedRoute {
   private constructor (
     private nuxtRoutes: NuxtPage[],
-    private path: string,
+    private typePath: string,
+    private routePath: string,
     private routes: Route[] = []
   ) {
     this.nuxtRoutes = nuxtRoutes
   }
 
-  public static make (pages: NuxtPage[], path: string): TypedRoute {
-    const typedRoute = new TypedRoute(pages, path)
+  public static make (pages: NuxtPage[], typePath: string, routePath: string): TypedRoute {
+    const typedRoute = new TypedRoute(pages, typePath, routePath)
     typedRoute.routes = typedRoute.setRoutes()
     typedRoute.createCache()
 
@@ -83,14 +84,19 @@ export class TypedRoute {
   }
 
   private createCache () {
-    const stream = createWriteStream(this.path, { flags: 'w' })
+    const streamType = createWriteStream(this.typePath, { flags: 'w' })
 
-    stream.once('open', () => {
-      this.setRouteList(stream)
-      this.setRouteListType(stream)
-      this.setRouteParamsType(stream)
-      this.setRouteType(stream)
-      stream.end()
+    streamType.once('open', () => {
+      this.setRouteListType(streamType)
+      this.setRouteParamsType(streamType)
+      this.setRouteType(streamType)
+      streamType.end()
+    })
+
+    const streamRoute = createWriteStream(this.routePath, { flags: 'w' })
+    streamRoute.once('open', () => {
+      this.setRouteList(streamRoute)
+      streamRoute.end()
     })
   }
 

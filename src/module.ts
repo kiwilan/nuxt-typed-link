@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { existsSync, writeFileSync } from 'fs'
+import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import { defineNuxtModule, addPlugin, createResolver, addComponent, addTemplate, addImports } from '@nuxt/kit'
 import { name, version } from '../package.json'
 import { TypedRoute } from './tools/typed-route'
@@ -35,11 +35,20 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
-    const path = `${nuxt.options.buildDir}/typed-routes.ts`
-    if (!existsSync(path)) { writeFileSync(path, '') }
+    const path = `${nuxt.options.buildDir}`
+    const typeFile = 'typed-link.d.ts'
+    const routeFile = 'typed-link-routes.ts'
+
+    const typePath = `${path}/${typeFile}`
+    const routePath = `${path}/${routeFile}`
+    if (!existsSync(typePath) || !existsSync(routePath)) {
+      mkdirSync(path, { recursive: true })
+      writeFileSync(typePath, '')
+      writeFileSync(routePath, '')
+    }
 
     addImports({
-      name: 'useImage',
+      name: 'useTypedLink',
       from: resolve('runtime/composables')
     })
     addComponent({
@@ -48,7 +57,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('pages:extend', (pages) => {
-      TypedRoute.make(pages, path)
+      TypedRoute.make(pages, typePath, routePath)
     })
 
     nuxt.options.alias['#typed-routes-options'] = addTemplate({
