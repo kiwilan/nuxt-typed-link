@@ -9,6 +9,8 @@ jobs:
   release:
     name: publish
     runs-on: ubuntu-latest
+    paths-ignore:
+      - 'i18n-app/**'
     steps:
       - name: 📚 checkout
         uses: actions/checkout@v3
