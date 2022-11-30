@@ -3,7 +3,7 @@ name: publish
 on:
   push:
     paths-ignore:
-      - 'i18n-app/**'
+      - i18n-app
     branches:
       - main
 

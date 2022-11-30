@@ -4,7 +4,7 @@
 [![nuxt](https://img.shields.io/static/v1?label=Nuxt&message=3&color=00C58E&style=flat-square&logo=nuxt.js&logoColor=ffffff)](https://nuxt.com/)
 [![publish](https://img.shields.io/github/workflow/status/kiwilan/nuxt-typed-link/publish?style=flat-square&logo=github&logoColor=ffffff&label=publish)](https://github.com/kiwilan/nuxt-typed-link/actions)
 
-A **Nuxt 3** module to use `NuxtLink` as `TypedLink` with typed routes.
+A **Nuxt 3** module to use `TypedLink` component with typed routes.
 
 ## Why
 
