@@ -52,6 +52,14 @@ export default defineNuxtConfig({
 | `componentName` | `string`  | `TypedLink` | Override component name.                                        |
 | `i18n`          | `boolean` | `false`     | i18n enabled, if you use <https://github.com/nuxt-modules/i18n> |
 
+## Example
+
+```bash
+pages/
+├── index.vue
+├── about.vue
+```
+
 ```vue
 <template>
   <div>
@@ -61,8 +69,8 @@ export default defineNuxtConfig({
       Home
     </TypedLink>
     <TypedLink :to="{
-      name: 'about',
-    }">
+      name: 'abut', 
+    }"> <!-- type error! -->
       About
     </TypedLink>
   </div>
