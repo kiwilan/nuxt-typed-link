@@ -83,6 +83,11 @@ pages/
 | -------- | ----------- | ------------ | --------------- |
 | `to`     | `RouteType` | `true`       | Route object.   |
 
+## Roadmap
+
+- [ ] Support typed `query`
+- [ ] Add type for composable `routes`
+
 ## 💻 Development
 
 - Clone repository
