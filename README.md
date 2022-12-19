@@ -2,7 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/nuxt-typed-link.svg?style=flat-square&color=CB3837&logo=npm&logoColor=ffffff&label=npm)](https://www.npmjs.com/package/nuxt-typed-link)
 [![nuxt](https://img.shields.io/static/v1?label=Nuxt&message=3&color=00C58E&style=flat-square&logo=nuxt.js&logoColor=ffffff)](https://nuxt.com/)
-[![publish](https://img.shields.io/github/workflow/status/kiwilan/nuxt-typed-link/publish?style=flat-square&logo=github&logoColor=ffffff&label=publish)](https://github.com/kiwilan/nuxt-typed-link/actions)
+
+![publish](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/publish.yml/badge.svg)
 
 A **Nuxt 3** module to use `TypedLink` component with typed routes.
 
@@ -16,6 +17,12 @@ With `NPM`
 
 ```bash
 npm install nuxt-typed-link -D
+```
+
+With `yarn`
+
+```bash
+yarn add nuxt-typed-link -D
 ```
 
 Or `pnpm`
