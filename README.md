@@ -95,6 +95,10 @@ pages/
 - [ ] Support typed `query`
 - [ ] Add type for composable `routes`
 
+## More typescript in your app?
+
+Try [nuxt-svg-tranformer](https://github.com/kiwilan/nuxt-svg-transformer) to get typed SVG with icon component.
+
 ## 💻 Development
 
 - Clone repository
