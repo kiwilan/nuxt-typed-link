@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/nuxt-typed-link.svg?style=flat-square&color=CB3837&logo=npm&logoColor=ffffff&label=npm)](https://www.npmjs.com/package/nuxt-typed-link)
 [![nuxt](https://img.shields.io/static/v1?label=Nuxt&message=v3&color=28cf8d&style=flat-square&logo=nuxt.js&logoColor=ffffff)](https://nuxt.com/)
 
-![publish](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/publish.yml/badge.svg)
+![tests](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/tests.yml/badge.svg)
 
 A **Nuxt 3** module to use `TypedLink` component with typed routes.
 
@@ -128,4 +128,4 @@ Add it to your Nuxt app.
 
 [MIT](./LICENSE)
 
-[<img src="https://user-images.githubusercontent.com/48261459/201463225-0a5a084e-df15-4b11-b1d2-40fafd3555cf.svg" height="100rem" width="100%" />](https://github.com/kiwilan)
+[<img src="https://user-images.githubusercontent.com/48261459/201463225-0a5a084e-df15-4b11-b1d2-40fafd3555cf.svg" height="120rem" width="100%" />](https://github.com/kiwilan)
