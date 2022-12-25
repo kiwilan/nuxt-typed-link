@@ -4,12 +4,21 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "PNPM install",
+      "label": "install",
       "type": "shell",
       "command": "pnpm i",
       "problemMatcher": [],
       "presentation": {
-        // "reveal": "silent",
+        "revealProblems": "onProblem",
+        "close": true
+      }
+    },
+    {
+      "label": "update",
+      "type": "shell",
+      "command": "pnpm update --latest",
+      "problemMatcher": [],
+      "presentation": {
         "revealProblems": "onProblem",
         "close": true
       }
@@ -26,6 +35,27 @@
     {
       "type": "npm",
       "script": "dev",
+      "problemMatcher": [],
+      "presentation": {
+        "revealProblems": "onProblem",
+        "close": true
+      }
+    },
+    {
+      "label": "pack-local",
+      "type": "shell",
+      "command": "pnpm prepack && rm -f ~/nuxt-svg-transformer-*.tgz || true && npm pack && mv nuxt-svg-transformer-*.tgz ~/",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "revealProblems": "never",
+        "close": true
+      }
+    },
+    {
+      "label": "pre-deploy",
+      "type": "shell",
+      "command": "git checkout main && git merge develop && git push && git checkout develop",
       "problemMatcher": [],
       "presentation": {
         "revealProblems": "onProblem",
