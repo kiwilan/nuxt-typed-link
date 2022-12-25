@@ -7,7 +7,7 @@
 
 ![ci](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/ci.yml/badge.svg)
 
-# SVG transformer
+# Nuxt `typed-link`
 
 A **Nuxt 3** module to use `TypedLink` component with typed routes.
 
