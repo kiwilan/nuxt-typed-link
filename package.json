@@ -1,11 +1,26 @@
 {
   "name": "nuxt-typed-link",
   "version": "0.0.2",
+  "description": "Nuxt 3 module to use `TypedLink` component with typed routes.",
+  "repository": {
+    "directory": "kiwilan/nuxt-svg-transformer",
+    "type": "git",
+    "url": "https://github.com/kiwilan/nuxt-typed-link"
+  },
+  "homepage": "https://github.com/kiwilan/nuxt-typed-link#readme",
+  "license": "MIT",
   "author": {
     "name": "Kiwilan",
-    "email": "ewilan.riviere@gmail.com"
+    "email": "ewilan.riviere@gmail.com",
+    "url": "https://github.com/kiwilan"
   },
-  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ewilan Rivière",
+      "email": "ewilan.riviere@gmail.com",
+      "url": "https://github.com/ewilan-riviere"
+    }
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -19,12 +34,16 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "npm run dev:prepare",
     "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "watch": "nodemon",
-    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint": "eslint --ext .ts --ext .vue .",
+    "docs:dev": "cd docs && pnpm i && pnpm dev",
+    "docs:build": "cd docs && pnpm i && pnpm generate",
+    "docs:preview": "cd docs && pnpm preview",
+    "release": "pnpm test && standard-version && git push --follow-tags && npm publish",
     "test": "pnpm lint"
   },
   "dependencies": {
