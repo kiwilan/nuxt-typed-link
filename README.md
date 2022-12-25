@@ -1,15 +1,28 @@
-# nuxt-typed-link
+[![nuxt-typed-link](./docs/public/cover.jpg "nuxt-typed-link")](./docs/public/cover.jpg)
 
-[![npm](https://img.shields.io/npm/v/nuxt-typed-link.svg?style=flat-square&color=CB3837&logo=npm&logoColor=ffffff&label=npm)](https://www.npmjs.com/package/nuxt-typed-link)
-[![nuxt](https://img.shields.io/static/v1?label=Nuxt&message=v3&color=28cf8d&style=flat-square&logo=nuxt.js&logoColor=ffffff)](https://nuxt.com/)
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+[![Nuxt][nuxt-version-src]][nuxt-version-href]
 
-![tests](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/tests.yml/badge.svg)
+![ci](https://github.com/kiwilan/nuxt-typed-link/actions/workflows/ci.yml/badge.svg)
+
+# SVG transformer
 
 A **Nuxt 3** module to use `TypedLink` component with typed routes.
 
 ## Why
 
 This module is heavy inspired by [nuxt-typed-router](https://github.com/victorgarciaesgi/nuxt-typed-router), you can use in your app too. Where `nuxt-typed-router` give a router typed, `nuxt-typed-link` give a new component `TypedLink` strongly typed.
+
+## Features
+
+- [**Nuxt 3**](https://nuxt.com) support
+- 🔎 Vue component ready with `TypedLink`
+- 🔥 Hot reloading when routes updated
+- 🌏 Support i18n (<https://github.com/nuxt-modules/i18n>)
+- ✅ Support `params`
+- 🦾 Strongly typed, validate by `to` prop (`typescript` required)
 
 ## Installation
 
@@ -30,14 +43,6 @@ Or `pnpm`
 ```bash
 pnpm add nuxt-typed-link -D
 ```
-
-## Features
-
-- 🔎 Vue component ready with `TypedLink`
-- 🔥 Hot reloading when routes updated
-- 🌏 Support i18n (<https://github.com/nuxt-modules/i18n>)
-- ✅ Support `params`
-- 🦾 Strongly typed, validate by `to` prop (`typescript` required)
 
 ## Usage
 
@@ -95,10 +100,6 @@ pages/
 - [ ] Support typed `query`
 - [ ] Add type for composable `routes`
 
-## More typescript in your app?
-
-Try [nuxt-svg-tranformer](https://github.com/kiwilan/nuxt-svg-transformer) to get typed SVG with icon component.
-
 ## 💻 Development
 
 - Clone repository
@@ -124,8 +125,24 @@ Add it to your Nuxt app.
 }
 ```
 
+## More typescript in your app?
+
+Try [nuxt-svg-transformer](https://github.com/kiwilan/nuxt-svg-transformer) to manage SVG as icons, transform SVG to inject dynamically into Vue component, type included.
+
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) - Made with 💚
 
 [<img src="https://user-images.githubusercontent.com/48261459/201463225-0a5a084e-df15-4b11-b1d2-40fafd3555cf.svg" height="120rem" width="100%" />](https://github.com/kiwilan)
+
+[nuxt-version-src]: https://img.shields.io/static/v1?label=Nuxt&message=v3&color=28cf8d&logo=nuxt.js&logoColor=ffffff&labelColor=18181b
+[nuxt-version-href]: https://npmjs.com/package/nuxt-typed-link
+
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-typed-link/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/nuxt-typed-link
+
+[npm-downloads-src]: https://img.shields.io/npm/dt/nuxt-typed-link.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/nuxt-typed-link
+
+[license-src]: https://img.shields.io/github/license/kiwilan/nuxt-typed-link.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://github.com/kiwilan/nuxt-typed-link/blob/main/LICENSE

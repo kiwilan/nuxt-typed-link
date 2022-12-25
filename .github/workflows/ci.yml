@@ -1,4 +1,4 @@
-name: tests
+name: CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    name: tests
+    name: ci
     runs-on: ubuntu-latest
     steps:
       - name: 📚 checkout
@@ -26,4 +26,5 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm dev:prepare
+      - run: pnpm lint
       - run: pnpm prepack
