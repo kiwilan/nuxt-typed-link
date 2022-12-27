@@ -1,3 +1,7 @@
+## 0.0.5
+
+For `query` attribute, use `Record<string, string | number | boolean>` instead of `Record<string, string>`.
+
 ## 0.0.4
 
 Add `hash` to `RouteType` to allow for custom hash routing.
