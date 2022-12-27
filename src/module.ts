@@ -61,7 +61,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.options.alias['#typed-routes-options'] = addTemplate({
-      filename: 'svg-transformer-options.mjs',
+      filename: 'typed-routes-options.mjs',
       getContents: () => Object.entries(options)
         .map(([key, value]) => `export const ${key} = ${JSON.stringify(value, null, 2)}`)
         .join('\n')
