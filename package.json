@@ -1,6 +1,6 @@
 {
   "name": "nuxt-typed-link",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nuxt 3 module to use `TypedLink` component with typed routes.",
   "repository": {
     "directory": "kiwilan/nuxt-svg-transformer",
