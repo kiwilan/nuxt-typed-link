@@ -147,6 +147,7 @@ export class TypedRoute {
     stream.write('  name: TypedRouteList\n')
     stream.write('  params?: TypedRouteParams[TypedRouteList]\n')
     stream.write('  query?: Record<string, string>\n')
+    stream.write('  hash?: string\n')
     stream.write('}\n')
   }
 }
