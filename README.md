@@ -95,6 +95,17 @@ pages/
 | -------- | ----------- | ------------ | --------------- |
 | `to`     | `RouteType` | `true`       | Route object.   |
 
+### `RouteType`
+
+```ts
+type RouteType = {
+  name: TypedRouteList
+  params?: TypedRouteParams[TypedRouteList]
+  query?: Record<string, string | number | boolean>
+  hash?: string
+}
+```
+
 ## Roadmap
 
 - [ ] Support typed `query`
