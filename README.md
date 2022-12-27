@@ -89,6 +89,20 @@ pages/
 </template>
 ```
 
+```vue
+<script lang="ts" setup>
+import { RouteType } from './.nuxt/typed-routes'
+
+const { push } = useTypedLink()
+const navItems: { name: string, to: RouteType }[] = [
+  {
+    name: 'Home',
+    to: { name: 'index' }
+  },
+]
+</script>
+```
+
 ## `TypedLink` Props
 
 | **Prop** | **Type**    | **Required** | **Description** |
