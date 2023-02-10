@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Fix wrong build output.
+
 ## 0.0.5
 
 For `query` attribute, use `Record<string, string | number | boolean>` instead of `Record<string, string>`.
