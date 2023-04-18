@@ -103,14 +103,27 @@ export class TypedRoute {
   private setRouteList (stream: WriteStream) {
     stream.write('export const routes = {\n')
     this.routes.forEach((route) => {
+      let path = route.path
+      if (path.includes('()')) {
+        path = path.replace('()', '')
+      }
+
       stream.write(`  '${route.name}': {\n`)
       stream.write(`    name: '${route.name}',\n`)
-      stream.write(`    path: '${route.path}',\n`)
+      stream.write(`    path: '${path}',\n`)
       if (route.params && Object.keys(route.params).length) {
         stream.write('    params: {\n')
 
         Object.keys(route.params).forEach((key) => {
-          if (route.params) { stream.write(`      ${key}: '${route.params[key]}',\n`) }
+          if (route.params) {
+            let param = ''
+            if (key.includes('()')) {
+              param = route.params[key]
+              key = key.replace('()', '')
+            }
+
+            stream.write(`      ${key}: '${param}',\n`)
+          }
         })
         stream.write('    },\n')
       } else {
@@ -134,6 +147,10 @@ export class TypedRoute {
       if (route.params) {
         stream.write(`  '${route.name}': {\n`)
         Object.keys(route.params).forEach((param) => {
+          if (param.includes('()')) {
+            param = param.replace('()', '')
+          }
+
           stream.write(`    ${param}: string | number\n`)
         })
         stream.write('  }\n')
