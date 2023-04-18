@@ -9,7 +9,15 @@ const props = defineProps<{
   to: RouteType
 }>()
 
-const localePath = useLocalePath()
+let localePath = function (route: RouteLocation) {
+  return route
+}
+try {
+  localePath = useLocalePath()
+} catch (error) {
+  console.error('useLocalePath is not defined')
+}
+
 const route = props.to as unknown as RouteLocation
 </script>
 
