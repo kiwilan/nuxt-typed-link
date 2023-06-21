@@ -5,10 +5,10 @@ import { routes } from '~~/.nuxt/typed-link-routes'
 export const useTypedLink = () => {
   const router = useRouter()
   const push = (to: RouteType) => {
-    router.push(to)
+    router.push(to as any)
   }
   const replace = (to: RouteType) => {
-    router.replace(to)
+    router.replace(to as any)
   }
   const go = (n: number) => {
     router.go(n)

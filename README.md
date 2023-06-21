@@ -1,3 +1,7 @@
+# DEPRECATED
+
+You can use [nuxt-typed-router](https://github.com/victorgarciaesgi/nuxt-typed-router) instead.
+
 [![nuxt-typed-link](./docs/public/cover.jpg "nuxt-typed-link")](./docs/public/cover.jpg)
 
 [![npm version][npm-version-src]][npm-version-href]
@@ -47,16 +51,14 @@ pnpm add nuxt-typed-link -D
 ## Usage
 
 ```ts
-import { defineNuxtConfig } from 'nuxt/config'
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  modules: [
-    'nuxt-typed-link',
-  ],
+  modules: ["nuxt-typed-link"],
   typedLink: {
     // ...
   },
-})
+});
 ```
 
 | **Option**      | **Type**  | **Default** | **Description**                                                 |
@@ -75,14 +77,19 @@ pages/
 ```vue
 <template>
   <div>
-    <TypedLink :to="{
-      name: 'index',
-    }">
+    <TypedLink
+      :to="{
+        name: 'index',
+      }"
+    >
       Home
     </TypedLink>
-    <TypedLink :to="{
-      name: 'abut', 
-    }"> <!-- type error! -->
+    <TypedLink
+      :to="{
+        name: 'abut',
+      }"
+    >
+      <!-- type error! -->
       About
     </TypedLink>
   </div>
@@ -91,15 +98,15 @@ pages/
 
 ```vue
 <script lang="ts" setup>
-import { RouteType } from './.nuxt/typed-routes'
+import { RouteType } from "./.nuxt/typed-routes";
 
-const { push } = useTypedLink()
-const navItems: { name: string, to: RouteType }[] = [
+const { push } = useTypedLink();
+const navItems: { name: string; to: RouteType }[] = [
   {
-    name: 'Home',
-    to: { name: 'index' }
+    name: "Home",
+    to: { name: "index" },
   },
-]
+];
 </script>
 ```
 
@@ -113,11 +120,11 @@ const navItems: { name: string, to: RouteType }[] = [
 
 ```ts
 type RouteType = {
-  name: TypedRouteList
-  params?: TypedRouteParams[TypedRouteList]
-  query?: Record<string, string | number | boolean>
-  hash?: string
-}
+  name: TypedRouteList;
+  params?: TypedRouteParams[TypedRouteList];
+  query?: Record<string, string | number | boolean>;
+  hash?: string;
+};
 ```
 
 ## Roadmap
@@ -162,12 +169,9 @@ Try [nuxt-svg-transformer](https://github.com/kiwilan/nuxt-svg-transformer) to m
 
 [nuxt-version-src]: https://img.shields.io/static/v1?label=Nuxt&message=v3&color=28cf8d&logo=nuxt.js&logoColor=ffffff&labelColor=18181b
 [nuxt-version-href]: https://npmjs.com/package/nuxt-typed-link
-
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-typed-link/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/nuxt-typed-link
-
 [npm-downloads-src]: https://img.shields.io/npm/dt/nuxt-typed-link.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/nuxt-typed-link
-
 [license-src]: https://img.shields.io/github/license/kiwilan/nuxt-typed-link.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://github.com/kiwilan/nuxt-typed-link/blob/main/LICENSE
